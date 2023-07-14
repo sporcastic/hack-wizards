@@ -1,0 +1,39 @@
+hello 
+i am navneet chandra 
+
+
+Architecture/Feature designs Review guidelines
+
+
+Owned by Navneet Chandra
+
+Apr 02, 20231 min read
+51 people viewed
+Define the scope:  Clearly define the scope of the architecture review, including the goals and objectives, the stakeholders, and the timeline.
+
+
+Review the requirements: Review the requirements document to ensure that the proposed architecture meets all the functional and non-functional requirements.
+
+
+Evaluate the architecture: Evaluate the architecture based on established design principles, such as modularity, scalability, maintainability, and usability.
+
+
+Evaluate the risks: Evaluate the risks associated with the proposed architecture and determine whether appropriate risk mitigation strategies have been identified and incorporated into the design.
+
+
+Assess the quality attributes:  Evaluate the quality attributes of the architecture, such as performance, security, reliability, and availability, and determine whether they meet the desired levels of performance.
+
+
+Consider Future Needs: Ensure that the design is flexible enough to accommodate future changes and can support the organization's long-term goals.
+
+
+Review the implementation plan: Review the implementation plan to ensure that it is feasible in the defined timeline and that all the necessary resources(tech stacks) are available. 
+
+
+Review the testing strategy: Ensure that the testing strategy is well-designed and includes sufficient testing at all levels of the architecture.
+
+
+Review the documentation: Review the architecture documentation, including the architectural diagrams, design specifications, and implementation plans, to ensure that they are clear, complete, and consistent.
+
+
+Provide feedback:  Provide constructive feedback to the team, highlighting any strengths and weaknesses in the proposed architecture and providing suggestions for improvement.

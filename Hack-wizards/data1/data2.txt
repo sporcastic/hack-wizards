@@ -1,0 +1,243 @@
+What is Laap?
+
+LaaP is Logistics-as-a-platform. It is a disintegrated network of on ground logistics partner and supply chain tech systems, stitched together serving responsibilities of the entire single order journey.
+
+
+
+
+
+Meesho is investing or building laap/valmo as ,  Over the past few months(2021), Meesho have seen a consistent impressive MoM growth in the number of orders. With the increase in Meesho’s scale, the E2E 3PLs haven’t been able to grown their capacity on the same curve. Additionally with the increase in sale volumes, predicting the 3PL capacity has been difficult hence leading to unfulfilled orders during sale/peak periods. Also, with the increase in volume, we do not see room to negotiate a reduction in forward CPS cost due to volume constraints across 3PLs. As we grow, our ability to change volume allocation amongst leading 3PL players will be limited which was a key lever used to control CPS. During peak season, the CPS increases by 20-30%. 
+
+
+
+Laap/Valmo Given the above set of problems, we desire the below outcomes - 
+1. Laap/Valmo  help in  Scale fulfilment capacity in-line with Meesho’s growth
+2. Laap/Valmo is lowest cost supply chain
+3. Laap/Valmo Provide our customers and suppliers with a world-class experience.
+
+
+
+How will LaaP structure look like?
+
+To solve for the above problem statements, we envisioned building LaaP/valmo, where we would be able to explicitly remove one 3PL from doing E2E operations and have the intelligence and ability to appoint different 3PLs across the 3 different legs of the supply chain. This would help us in reducing cost by bringing in more competition and also cater to increase in volume. LaaP essentially will have 3 layers - 
+
+  * Decision making layer one of the core component of laap - Responsible for all holding intelligence towards order allocation logics.
+  * Orchestration layer one of the core component of laap - Responsible for stitching multiple ops tech layers together across multiple legs.
+  * Ops tech layer one of the core component of laap - Responsible for interacting with on ground inputs and event.
+
+
+
+Laap/ Valmo opportunity : 
+1. Some LM pincodes get missed out as the 3PL partner appointed for E2E shipment is not serviceable in a FM pincode. Additionally, with our increase in suppliers, this issue is only set to increase. By de-coupling the E2E chain, LaaP will be able to solve for 1.6% serviceability. 
+2. Rs. 6 goodness on an E2E level at 80% OC.
+
+
+
+
+
+Laap/Valmo Vesion : In the future, we envision LaaP to be a standalone product which will be able to democratize logistics as a service. We want to give an opportunity to any logistics player regardless of their size to plug into LaaP and earn a living by rendering their services. LaaP/valmo on the other hand, will prove to be a robust platform for other meesho business to outsource their logistics needs where they wouldn’t have to worry about insane demand peaks and ever increasing shipping costs.
+
+
+
+
+
+Laap/Valmo vesion statement is Build India’s lowest cost unified pan India open logistics network.
+
+
+
+
+Stability and scalability, Auto DML, Orchestration layer, Returns, Fraud and sefety, Reducing gross loss and Improving RTO are the current pods of laap/valmo
+
+
+
+
+
+Vesion of laap/valmo oOrchestration layer : The end state vision of the in-house Laap/valmo Orch layer  is to build a middle layer which will govern the transfer of information like order creation, scans, updates across the 3 LaaP layers and even amongst the multiple ops tech layers. Its core job is not that of data creation on an order level but rather standardisation and transfer of data across the supply chain. This layer hence will also serve not just as a broker between Meesho (and other clients) and Ops tech but also as a user facing platform for multiple stakeholders to take actions governing an order. This will help us de-risk dependence on single orch layer.
+
+In the current stage of laap/valmo, we are focusing on building the problem statement and categorizing the tasks across 3 main buckets to be further prioritized for v1 development - 
+1. Core engine : Governs order creation, update, cancellation across multiple legs and ops tech partners
+2. Supporting modules : Covers hub master data creation and order view along with it’s management
+3. Platform dashboards and controls : Liability management and strong user access controls and logging
+
+
+
+these are the tech success metrics we measure in laap
+  1. Uptime - 99.96%
+  2. Scan delays and misses < 0.1%
+  3. Throughput SLA - P99 < 500ms
+  4. Manifestation error
+    1. Error at 1st level API integration with Shipsy (upstream) - <0.1%
+    2. Error at Shipsy’s end on their downstream integration with 3PL - <0.1%
+  5. Scan event tracking time - <5mins
+
+
+
+These are the termns used in laap/valmo : 
+fm_player	First Mile 3PL player chosen by DML for the order.
+mm_player	Mid Mile 3PL player chosen by DML for the order.
+lm_player	Last Mile 3PL player chosen by DML for the order.
+fm_pincode	First mile pincode i.e supplier pincode.
+lm_pincode	Last mile pincode i.e customer pincode.
+fm_city	First mile city i.e supplier city.
+lm_city	Last mile city i.e customer city.
+order_value	Invoice value i.e amount paid by the customer.
+declared_value	Meesho declared amount while manifesting the order. See Integration FAQs
+fm_awb	First mile AWB returned by Shipsy
+mm_awb	Mid mile AWB returned by Shipsy. This could be the docket ID as well.
+lm_awb	Last mile AWB returned by Shipsy
+created_at	Timestamp when payload object was created.
+updated_at	Timestamp when payload object was updated.
+parent_awb	Parent AWB to which all AWBs are mapped, this will be returned by Shipsy.
+order_id	Order ID
+DML	Decision making layer
+Ops tech	Operations technology software
+Orch	Orchestration layer
+FM	First mile
+MM	Mid mile
+LM	Last mile
+FMSC	First mile sort centre
+MMSC	Mid mile sort centre
+LMSC	Last mile sort centre
+LMDC	Last mile delivery centre
+LMCD	Last mile cross docks
+e2e	End to end
+OAE	Order allocation engine
+
+
+
+  The end state vision of the Laap/valmo auto DML is to build an intelligent layer which will encompass not just LaaP orders but also any supply chain orders including e2e. This layer should be able to understand key parameters about the supplier, customer and also have an intelligent network mapping built basis which the most efficient supply chain can be chosen. In the end state, the auto DML layer will include features like weight, category, pricing, TAT, customer & seller characteristics, 3PL capacity, node level TAT & pricing etc. which will enable the layer to formulate the decision of choosing the appropriate supply chain.
+
+
+
+
+Principles of laap/valmo Auto Dml 
+1. Separation of intent - Solutioning of Auto DML needs to be defined across multiple layers with each having a clear goal mutually exclusive of the preceding or succeeding layer. This is done to avoid conflicts/ human errors in file uploads for manual data entry, keep each layer individually scalable and diagnose system faults more accurately.
+2. Computation optimization - With multiple layers and intrinsic rule based system built into the Auto DML, the final output on every order basis will be extremely computation heavy. Hence, to avoid just in time decisions and large response times, a decision optimization layer will need to be built especially across the network mapping layer. (To be further scrutinised during tech solutioning)
+3. Designing for scale - All decision, logics and rules that are to be made, will be defined such as to keep 100% LaaP scale with end state vision in focus. The core brain and layers will not prove to be 100% iterative in design (rather rigid in architectural construct) hence it would be paramount to design Auto DML for 100% LaaP scalability while having room for variable scalability. This would mean solving for most not-iterative long term use cases in the v1 build itself.
+4. Reducing manual intervention - The goal for Auto DML is to build intelligence into the system without the need for non-binary manual inputs. This is intended to reduce human errors, build higher system let computation for faster turn around on changes and reduce scale up time on new lanes.
+5. Centralised business inputs: In terms of hard filters and optimisations/objectives at certain dimensions (e.g. prioritise experience over cost for new users in lane X, optimise for RTO in lane Y etc.)
+
+
+
+
+
+* Seller x FM hub mapping layer
+
+    Each seller will be mapped to a FM hub. This mapping will be at a seller ID x FM hub code level which can be a many to many mapping as well. This will be a 1x1 matrix with a maximum row threshold of 10 lakhs( At peak, each seller can be mapped to at most 2 hubs in the worst case scenario)
+
+* Each LM pincode will be mapped to a LMDC. This mapping will be at a LM pincode x LMDC hub code level. This will be a 1x1 matrix with a maxim threshold of 32k rows ( At peak, each LM pincode can be mapped to 2 LMDCs). 
+* This is the core layer which governs the connection of every node in the LaaP supply chain. It represents the mapping and node level attributes while mentioning the connectivity of one node to another. A node in the LaaP supply chain can be anything from the First Mile hub to the last mile delivery centre. This layer will essentially governs the route of the supply chainl. For example, a shipment from source pincode A to destination pincode B can take multiple routes. From the below diagram, it can take 3 supply chain routes - 
+      1. 1 - 2a - 3a - 4 - 5 - 6
+      2. 1 - 2b - 3a - 4 -5 - 6
+      3. 1 - 2b - 3b -4 - 5 - 6
+* The hub x property map layer will consist of a mapping between each hub(node) and the ops tech layer it is operating on. It is a 1x1 matrix having a one-to-one mapping.
+* Ranking engine
+
+    The ranking engine consists of Meesho inherent logics which will help us define the priority order of the supply chain to be taken for a particular order. This will constitute input from features like pricing, TAT, capacity, weight etc. The feature values which will become an input for the ranking engine will be taken from the network mapping layer where each price, TAT, capacity key has a value which represent the connection between two nodes. For instance, the row at the intersection of FMH-1 and FMSC-2 with not Null values, represents the price and TAT for the connection beween FMH-1 and FMSC-2. Eventually, the supply chain will have many such connection and the Price, TAT will be a combination of each node values. The ranking engine will take the final output for calculating the priority. 
+
+* Route exclusion layer
+
+    A final layer which will have all the lanes which cannot be an outcome of the ranking engine if though a connection exists. This will be a hard check, manually uploaded. 
+
+* Manifestation engine
+
+    This layer is only responsible for creating orders on the orchestration layers and catching exceptions wherever necessary to send them back to our e2e system so as to avoid any order loss.
+
+    
+
+What are the future builds for Auto DML?
+
+1. Link level deprioritization
+
+  For a specific lane, ops would want a feature where then can deprioritize/remove a possible link as a route option. This could be done by changing the TAT or price for the specific link as well, but that would affect other lane routes also, hence having a separate layer which allows to control link level deprioritization from an optional route will be required.
+
+2. Dynamic route selection
+
+  It may so happen that the route plotted at the time of manifestation may not suffice during ground ops. Hence a layer of flexibility will be provided where certain nodes in the route will be kept as variables with subject to change as per ground ops/actual inputs. The same variabilization will have to be done at ops tech level also. 
+
+3. Seller onboarding to Laap
+
+  A dynamic formula will have to be built which will take into consideration certain seller level parameters like size, pincode etc. which will let the engine define if that particular seller has to be onboarded onto LaaP.  Currently this is being done by a manual file upload, but at scale, we’ll have to move towards a more automated approach. 
+
+4. Parameters for route selection
+
+  Shipment level, seller level, new node properties etc. are all new feature sets which will be taken into consideration will selecting a given route for a shipment. These will be incrementally developed in future versions of auto-DML> 
+
+5. DS Model
+
+  The network map will eventually involve into a DS model where it is able to predict the most efficient supply chain based on the historical data and just in time input parameters like capacity, truck load etc.
+
+
+
+
+
+Elasticrun, Loadshare and Fareye are the current ops tech partners in laap/Valmo. 
+
+
+Lapp/valmo is currently trending at 12% order contribution on a weekly level with average orders per day at 3.6Lakhs.
+
+
+Can you describe LaaP in a story format?
+Niharika, has been a user of Meesho since the early days. She lives in Lucknow, UP and often orders Kurtas from Meesho. Since she has been using Meesho, there have been orders which got cancelled owing to serviceability issues, some orders took longer to deliver and in some order she wondered if the delivery cost could be less.
+
+The team at Meesho has been aware of this problem for quite sometime. From orders not being delivered in peak periods due to 3PL un-fulfillment to higher CPS. The team spent many sleepless nights trying to figure out a solutions and then one magical morning, just when the first sip of coffee(for some :p) hit, an idea boomed. 
+  “What if we could give an opportunity to even the smallest of the logistics partner to work with Meesho?”
+                  “What if, just how we have democratised internet commerce in India, we do this for the logistics industry as well?”
+And thus forth, an idea was born. We called it LaaP - Logistics as a platform. While Niharika was busy scrolling through Meesho, our team here was burning the midnight oil to come up with the most scalable solution for the problems. We spent weeks understanding the ground realities, speaking to industry wide business experts and then finally solutioning the best possible approach towards LaaP. After months of relentless hardwork, we were able to re-define the processes and the flows so that our users could get their orders delivered faster, cheaper and from any location in India.
+
+
+Diving into the future - 
+It’s now 2022, the Meesho team has successfully launched and scaled up LaaP. Niharika, who was earlier in Lucknow, UP, has now shifted away from her family to a remote location in the outskirts of Himachal. Working from home has been a boon to her since now, she has a work view of valleys and rivers unlike any other. It’s a cozy weekend morning for Niharika, and she finds herself browsing through Meesho. She wants to buy something warm and finds a marvellous outfit for herself being sold by her favourite seller. A thought lingers in her mind “Will Meesho be able to deliver here?, let’s try”. As she moves to checkout and puts in her pincode, a moment of sheer delight! Meesho delivers in her location! And as if this wasn’t enough to add to her happiness, her delivery cost has also not significantly reduced. Niharika immediately places the order and waits, ever so eagerly for her order to arrive.
+
+A few days later, as promised, her order arrives, perfectly packed, with a small hand written note, which says - 
+
+“Stay warm! Love, mom”. Sometimes, technology does bring two people separated by thousands of miles, closer than ever. In Niharika’s case, it was a warm dress and a heartfelt note from her favourite seller, her mom. 
+
+In all of this process, owing to LaaP, Meesho was able to reduce shipping costs, provide employment to a local small scale logistics company called Hemp logistics for timely last mile delivery in Himachal, and deliver an order in a small remote town in Himachal. 
+
+
+
+
+in laap or Valmo we are having total 1500 nodes 
+in laap or vamo we  are having total 100 Fm (first mile hubes)
+
+
+What does Valmo logistics stands for?
+Value of money logistics
+
+What are the different types nodes in valmo network?
+First mile  
+Mid mile 
+Last mile 
+
+What are the roles and responsibilities of the first mile nodes?
+Shipment is collected from the supplier and initially collected in the first mile node within the close proximity of seller pin code.
+Later the shipments from first mile node is sorted in smaller bags based on the destination pincodes.
+Shipment is later sent to the further hubs falling on the journey to the destination.
+
+
+What are the roles and responsibilities of the mid mile nodes?
+Mid mile nodes plays an important role in routing the shipment arriving from first mile nodes to the last mile distribution center.
+Mid miles are usually located in such an area where the transport feasibility is good for larger vehicles.
+
+
+What are the different types of mid miles?
+Mid mile sort center: At mid mile sort center bag arriving from the first mile hub is opened and re-sorting of shipments are carried out.
+Cross dock: At cross dock a shipment bag arriving from first mile is forwarded to the further hubs without opening and re-sorting it.
+
+Why we should choose Valmo versus e2e 3pls?
+Valmo provides a low cost supply chain with ETAs almost similar to the e2e 3pls. 
+
+valmo is a branding of laap. 
+valmo is brand name of laap. 
+valmo is laap. 
+laap is valmo 
+valmo is brand name of laap
+
+valmo / Laap is currently functioning/active  on 40 first mile hubs/nodes (FM) in various cities like Surat, Delhi, Ahmedabad, Rajkot, Meerut, Ghaziabad, Mumbai, Jaipur, Noida, Fatehabad, Ghaziabad, Meerut, Sonipat, Panipat
+
+valmo / Laap is currently functioning/active  on 19 Mid mile hubes/nodes (MM) in various cities like Delhi (3), Surat (2), Ahmedabad (1), Mumbai (1), Bangalore (1), Lucknow (1), Varanasi (1), Patna (1), Ranchi (1), Guwahati (1), Digrugarh (1), Gopalganj (1), Bhubaneswar (1), Kolkata (1), Siliguri (1), Jaipur (1)
+
+
+valmo / Laap is currently functioning/active  on total 1028 Distribution centre (DCs)/ Last mile hubs/nodes (LM) accrose India. 
+
